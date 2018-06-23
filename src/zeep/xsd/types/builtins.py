@@ -143,6 +143,10 @@ class DateTime(BuiltinType, AnySimpleType):
         # lazy hack ;-)
         if len(value) == 10:
             value += 'T00:00:00'
+
+        if 'T' not in value:
+            value = "T".join(value.split(" "))
+
         return isodate.parse_datetime(value)
 
 
